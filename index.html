@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Personal Expense Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>Personal Expense Calculator</h1>
+<section class="card top"><label>Your name<input id="uname" type="text" placeholder="e.g. Rakshi" autocomplete="name"></label>
+<label>Month<input id="month" type="month"></label>
+<button type="button" id="saveMonth">Save this month</button></section>
+<p class="saved" id="saved" role="status"></p>
+<div class="layout">
+  <div>
+    <section class="card">
+      <h2>1. Monthly income</h2>
+      <label>Income (Rs)<input id="income" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 30000"></label>
+    </section>
+    <section class="card">
+      <h2>2. Add expense</h2>
+      <form id="form" novalidate>
+        <label>Expense name<input id="name" type="text" placeholder="e.g. Lunch"></label>
+        <label>Amount (Rs)<input id="amount" type="number" min="0" step="any" inputmode="decimal"></label>
+        <label>Category<select id="cat"><option>Food</option><option>Transport</option><option>Rent</option><option>Education</option><option>Entertainment</option><option>Other</option></select></label>
+        <p class="err" id="err" role="alert"></p>
+        <button type="submit">Add expense</button>
+        <button type="button" class="link" id="clear">Clear all</button>
+      </form>
+    </section>
+  </div>
+  <div>
+    <section class="card" aria-live="polite">
+      <h2>Summary report</h2>
+      <div class="stats">
+        <div class="stat"><small>Income</small><b id="sInc">Rs 0</b></div>
+        <div class="stat"><small>Expenses</small><b id="sExp">Rs 0</b></div>
+        <div class="stat"><small>Savings</small><b id="sSav">Rs 0</b></div>
+      </div>
+      <p class="msg" id="msg">Enter your income and add expenses.</p>
+    </section>
+    <section class="card"><h2>Expenses by category</h2><div id="cats"><p class="empty">No expenses yet.</p></div></section>
+  </div>
+</div>
+<section class="card"><h2>Suggestions for <span id="who">you</span></h2><div id="tips"><p class="empty">Add income and expenses to get suggestions.</p></div></section>
+<section class="card"><h2>Monthly progress</h2><div class="scroll"><table><thead><tr><th>Month</th><th class="n">Income</th><th class="n">Expenses</th><th class="n">Savings</th><th class="n">Rate</th><th>Change vs last month</th></tr></thead><tbody id="hist"></tbody></table></div><p class="msg" id="progress"></p></section>
+<section class="card"><h2>Expense list</h2><div class="scroll"><table><thead><tr><th>Name</th><th>Category</th><th class="n">Amount</th><th></th></tr></thead><tbody id="list"></tbody></table></div></section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
